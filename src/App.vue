@@ -11,7 +11,7 @@
   </section>
 </template>
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 export default {
   setup() {
     const firstName = ref("");
@@ -22,6 +22,10 @@ export default {
       return firstName.value + " " + lastName.value;
     });
 
+    watch(uAge, function(newValue, oldValue){
+console.log('Old age'+oldValue)
+console.log('Old age'+newValue)
+    })
 
     // const user = reactive({
     //   name: "Ritik",
