@@ -5,27 +5,18 @@
     <button @click="setAge">Change Age</button>
   </section>
 </template>
-
 <script>
-// import { ref } from 'vue';
-import { reactive } from 'vue';
-// import func from 'vue-editor-bridge';
-
+import { reactive } from "vue";
 export default {
   setup() {
-    // const uName = ref('Maximilian');
-    // const uAge = ref(31);
     const user = reactive({
-      name: 'Ritik',
+      name: "Ritik",
       age: 20,
     });
-
-    setTimeout(function () {
-      user.name = 'Ritik';
-      user.age = 22;
-    });
-
-    return { user: user };
+    function setNewAge() {
+      user.age = 32;
+    }
+    return { user: user, setAge: setNewAge };
   },
   // data() {
   //   return {
