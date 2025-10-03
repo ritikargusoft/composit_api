@@ -16,23 +16,33 @@ export default {
   setup() {
     const firstName = ref("");
     const lastName = ref("");
+    const lastNameInput = ref(null);
+    // const firstNameInput = ref(null);
     const uAge = ref(31);
 
     const uName = computed(function () {
       return firstName.value + " " + lastName.value;
     });
 
-    watch(uAge, function(newValue, oldValue){
-console.log('Old age'+oldValue)
-console.log('Old age'+newValue)
-    })
+    watch(uAge, function (newValue, oldValue) {
+      console.log("Old age" + oldValue);
+      console.log("Old age" + newValue);
+    });
+
+    function setLastName() {
+      lastName.value = this.$refs.lastNameInput.value;
+    }
+
+    // function setFirstName(){
+    //   firstName.value = this.$refs.firstNameInput.value;
+    // }
 
     // const user = reactive({
     //   name: "Ritik",
     //   age: 20,
     // });
 
-    function setNewAge(){
+    function setNewAge() {
       uAge.value = 33;
     }
 
@@ -47,8 +57,10 @@ console.log('Old age'+newValue)
       age: uAge,
       userName: uName,
       setAge: setNewAge,
-      firstName:firstName,
-      lastName:lastName,
+      firstName: firstName,
+      lastName: lastName,
+      lastNameInput,
+      setLastName,
     };
   },
   // data() {
@@ -87,5 +99,3 @@ body {
   text-align: center;
 }
 </style>
-
-
